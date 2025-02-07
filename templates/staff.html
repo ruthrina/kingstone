@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block title %}
+Staff and Non-Staff - Kingstone High School
+{% endblock %}
+
+{% block content %}
+<style>
+    /* Custom Styles for an Attractive Design */
+.card {
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    background: linear-gradient(145deg, #f7f7f7, #e0e0e0);
+}
+
+.card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    width: 100%; /* Ensure the image fills the width of the card */
+    height: 250px; /* Set a fixed height for the image */
+    object-fit: cover; /* Ensure the image covers the container without stretching */
+    border: 5px solid white;
+    border-radius: 10px; /* Optional: Rounded corners for the image */
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-img-top:hover {
+    transform: scale(1.1); /* Zoom in the image on hover */
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-footer {
+    background-color: transparent;
+    padding: 0.8rem;
+}
+
+.card-footer .leader-quote {
+    font-style: italic;
+    color: #6c757d;
+}
+
+.card-body .leader-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.card-body .leader-title {
+    font-size: 1rem;
+    color: #777;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+/* Hover Effect for the Entire Card */
+.hover-card:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+h3 {
+    font-size: 2rem;
+    color: #28a745;
+    font-weight: 600;
+}
+
+h6.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #28a745;
+}
+
+.leader-photo {
+    border-radius: 50%;
+}
+
+.leader-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.leader-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.leader-quote {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 767px) {
+    .card-img-top {
+        height: 180px; /* Adjust image height on smaller screens */
+    }
+}
+
+</style>
+<!-- Header Start -->
+<div class="container-fluid py-5 mb-5 page-header" style="background-image: url('{% static 'img/1.jpeg' %}'); background-size: cover; background-position: center; position: relative; height: 300px;">
+    <!-- Dark overlay to reduce brightness only in the image area -->
+    <div class="overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5);"></div>
+
+    <div class="container py-5 position-relative" style="z-index: 2;">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <h1 class="display-3 text-white animated slideInDown">Staff and Non-Staff</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Staff and Non-Staff</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Header End -->
+
+<!-- Marquee Start -->
+<div class="container-fluid bg-light py-3 shadow-sm">
+    <marquee behavior="scroll" direction="left" class="text-primary fw-bold fs-5">
+        🌟 Welcome to Kingstone High School 🌟 | Meet Our Dedicated Staff & Non-Staff Members Who Make Learning Exceptional!
+    </marquee>
+</div>
+<!-- Marquee End -->
+
+<div class="container-xxl py-5">
+    <div class="container">
+        
+
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h6 class="section-title text-success bg-light px-3 d-inline-block shadow-sm">Leadership</h6>
+                    <h1 class="display-5">Meet the Pioneers of Excellence</h1>
+                    <p class="text-muted">Our leaders inspire, guide, and set the vision for a brighter future.</p>
+                </div>
+        
+                <!-- Staff Timeline -->
+                <div class="row g-5">
+                    <h3 class="text-center mb-4">Our Staff</h3>
+                    {% for leader in staff %}
+                        <div class="col-md-4">
+                            <div class="card border-0 shadow-lg text-center position-relative rounded-lg hover-card">
+                                <img src="{{ leader.photo.url }}" alt="{{ leader.name }}" class="card-img-top rounded-circle leader-photo">
+                                <div class="card-body">
+                                    <h5 class="text-primary fw-bold leader-name">{{ leader.name }}</h5>
+                                    <p class="text-muted leader-title">{{ leader.title }}</p>
+                                </div>
+                                <div class="card-footer bg-transparent text-center">
+                                    <p class="mb-0 leader-quote">{{ leader.quote }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+        
+                <!-- Non-Staff Timeline -->
+                <div class="row g-5 mt-5">
+                    <h3 class="text-center mb-4">Our Non-Staff</h3>
+                    {% for leader in non_staff %}
+                        <div class="col-md-4">
+                            <div class="card border-0 shadow-lg text-center position-relative rounded-lg hover-card">
+                                <img src="{{ leader.photo.url }}" alt="{{ leader.name }}" class="card-img-top rounded-circle leader-photo">
+                                <div class="card-body">
+                                    <h5 class="text-primary fw-bold leader-name">{{ leader.name }}</h5>
+                                    <p class="text-muted leader-title">{{ leader.title }}</p>
+                                </div>
+                                <div class="card-footer bg-transparent text-center">
+                                    <p class="mb-0 leader-quote">{{ leader.quote }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+        
+            </div>
+        </div>
+        
+
+    </div>
+</div>
+
+
+<!-- Call to Action Start -->
+<div class="container-fluid bg-primary py-5">
+    <div class="container text-center">
+        <h1 class="text-white">Join Our Team!</h1>
+        <p class="text-white mb-4">Interested in becoming part of our dedicated team? Contact us today and start making a difference!</p>
+        <a href="/contact/" class="btn btn-light text-primary fw-bold py-2 px-4">Contact Us</a>
+    </div>
+</div>
+<!-- Call to Action End -->
+
+{% endblock %}

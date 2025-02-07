@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Events and News - Kingstone High School
+{% endblock %}
+
+{% block content %}
+
+
+<!-- Upcoming Events Section -->
+<section class="py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <h1 class="text-center text-primary mb-5" style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 2.5rem; letter-spacing: 2px; color: #1a1a1a;">
+            <i class="fas fa-calendar-alt" style="color: #007bff; margin-right: 10px;"></i> Upcoming Events
+        </h1>
+        <div class="row">
+            {% for event in events %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 rounded-4 shadow-lg d-flex flex-column" style="transition: transform 0.4s ease, box-shadow 0.4s ease; overflow: hidden; background-color: #ffffff;">
+                    {% if event.image %}
+                    <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}" style="object-fit: cover; height: 250px; transition: opacity 0.3s ease;">
+                    {% endif %}
+                    <div class="card-body p-4 d-flex flex-column" style="flex-grow: 1;">
+                        <h5 class="card-title text-dark mb-3" style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.4rem; color: #333333;">
+                            <i class="fas fa-calendar-check" style="color: #28a745; margin-right: 10px;"></i> {{ event.title }}
+                        </h5>
+                        <p class="card-text text-muted mb-3" style="font-size: 1rem; line-height: 1.6; color: #6c757d; flex-grow: 1;">
+                            <i class="fas fa-file-alt" style="color: #6c757d; margin-right: 10px;"></i> {{ event.description|truncatechars:120 }}
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <p class="card-text text-muted mb-0" style="font-size: 0.9rem; color: #007bff;">
+                                <small class="text-muted">
+                                    <i class="fas fa-calendar-day" style="color: #007bff;"></i> {{ event.date }}
+                                </small>
+                            </p>
+                            {% if event.link %}
+                            <a href="{{ event.link }}" class="btn btn-primary btn-sm" style="border-radius: 50px; padding: 12px 30px; font-weight: 600; background-color: #007bff; color: white; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;">Learn More</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <!-- Footer Section for "Stay Updated" -->
+                    <div class="card-footer text-center" style="background-color: #343a40; padding: 15px 0; font-size: 0.9rem; font-weight: 600; color: white;">
+                        <p class="text-muted mb-0" style="font-size: 1.2rem; color: #ffffff !important;">
+                            <i class="fas fa-bell" style="color: #ffffff; margin-right: 10px;"></i> Stay Updated!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Latest News Section -->
+<section class="py-5" style="background-color: #f4f6f9;">
+    <div class="container">
+        <h1 class="text-center text-primary mb-5" style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 2.5rem; letter-spacing: 2px; color: #1a1a1a;">
+            <i class="fas fa-bullhorn" style="color: #007bff; margin-right: 10px;"></i> Latest News
+        </h1>
+        <div class="row">
+            {% for news_item in news %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 rounded-4 shadow-lg d-flex flex-column" style="transition: transform 0.4s ease, box-shadow 0.4s ease; overflow: hidden; background-color: #ffffff;">
+                    {% if news_item.image %}
+                    <img src="{{ news_item.image.url }}" class="card-img-top" alt="{{ news_item.title }}" style="object-fit: cover; height: 250px; transition: opacity 0.3s ease;">
+                    {% endif %}
+                    <div class="card-body p-4 d-flex flex-column" style="flex-grow: 1;">
+                        <h5 class="card-title text-dark mb-3" style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.4rem; color: #333333;">
+                            <i class="fas fa-newspaper" style="color: #28a745; margin-right: 10px;"></i> {{ news_item.title }}
+                        </h5>
+                        <p class="card-text text-muted mb-3" style="font-size: 1rem; line-height: 1.6; color: #6c757d; flex-grow: 1;">
+                            <i class="fas fa-file-alt" style="color: #6c757d; margin-right: 10px;"></i> {{ news_item.description|truncatechars:120 }}
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            
+                            {% if news_item.link %}
+                            <a href="{{ news_item.link }}" class="btn btn-primary btn-sm" style="border-radius: 50px; padding: 12px 30px; font-weight: 600; background-color: #007bff; color: white; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;">Read More</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <!-- Footer Section for "Stay Updated" -->
+                    <div class="card-footer text-center" style="background-color: #343a40; padding: 15px 0; font-size: 0.9rem; font-weight: 600; color: white;">
+                        <p class="text-muted mb-0" style="font-size: 1.2rem; color: #ffffff !important;">
+                            <i class="fas fa-bell" style="color: #ffffff; margin-right: 10px;"></i> Stay Informed!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Styles -->
+<style>
+    .card {
+        border-radius: 12px;
+        overflow: hidden;
+        background-color: #ffffff;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        padding: 25px 20px;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 10px;
+        transition: color 0.3s ease;
+    }
+
+    .card-title:hover {
+        color: #28a745;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #6c757d;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        flex-grow: 1;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .btn-primary:hover {
+        background-color: #0069d9;
+        transform: translateY(-5px);
+    }
+
+    .fas.fa-calendar-alt {
+        font-size: 1.6rem;
+    }
+
+    .fas.fa-calendar-check,
+    .fas.fa-newspaper {
+        font-size: 1.4rem;
+    }
+
+    .fas.fa-file-alt,
+    .fas.fa-bell {
+        font-size: 1.2rem;
+    }
+
+    .card-footer {
+        background-color: #343a40;
+        padding: 15px 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: white !important;
+        position: relative;
+        text-align: center;
+    }
+
+    .card-footer p {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+</style>
+
+{% endblock %}

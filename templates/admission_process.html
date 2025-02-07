@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block title %}
+Admissions - Kingstone High School
+{% endblock %}
+
+{% block content %}
+<!-- Header Start -->
+<div class="container-fluid py-5 mb-5 page-header" 
+    style="background: url('{% static "img/14.jpeg" %}') no-repeat center center; background-size: cover;">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <h1 class="display-3 text-white animated slideInDown">Admissions</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Admissions</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Header End -->
+
+<!-- Admission Process Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h6 class="section-title bg-white text-center text-primary px-3">Admissions</h6>
+            <h1 class="mb-4">How to Join Kingstone High School</h1>
+            <p>We welcome prospective students and their families to become part of the Kingstone High School community. Follow the steps below to complete your admission process.</p>
+        </div>
+        <div class="row g-5">
+            <!-- Step 1 -->
+            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="bg-light p-4 text-center h-100">
+                    <i class="fa fa-3x fa-file-alt text-primary mb-4"></i>
+                    <h5 class="mb-3">Step 1: Application</h5>
+                    <p>Pick up an application form from the school office or download it from our website. Complete and submit the form with all required documents.</p>
+                </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="bg-light p-4 text-center h-100">
+                    <i class="fa fa-3x fa-users text-primary mb-4"></i>
+                    <h5 class="mb-3">Step 2: Interview & Assessment</h5>
+                    <p>Attend the scheduled interview and placement tests for students to assess readiness and placement in the appropriate grade.</p>
+                </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="bg-light p-4 text-center h-100">
+                    <i class="fa fa-3x fa-check-circle text-primary mb-4"></i>
+                    <h5 class="mb-3">Step 3: Admission Decision</h5>
+                    <p>Receive the admission decision via email or phone. Once admitted, proceed with tuition payment and other registration formalities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Admission Process End -->
+
+<!-- Required Documents Start -->
+<div class="container-xxl py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h6 class="section-title bg-white text-center text-primary px-3">Required Documents</h6>
+            <h1 class="mb-4">Documents for Admission</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="bg-white p-4 text-center">
+                    <i class="fa fa-3x fa-id-card text-primary mb-4"></i>
+                    <h5 class="mb-3">Birth Certificate</h5>
+                    <p>A copy of the applicant's birth certificate is required for verification purposes.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="bg-white p-4 text-center">
+                    <i class="fa fa-3x fa-file text-primary mb-4"></i>
+                    <h5 class="mb-3">Academic Records</h5>
+                    <p>Submit recent report cards or transcripts from the previous school attended.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="bg-white p-4 text-center">
+                    <i class="fa fa-3x fa-user text-primary mb-4"></i>
+                    <h5 class="mb-3">Passport Photos</h5>
+                    <p>Provide two recent passport-sized photographs of the applicant.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Required Documents End -->
+
+<!-- Why Choose Us Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h6 class="section-title bg-white text-center text-primary px-3">Why Choose Us</h6>
+            <h1 class="mb-4">The Kingstone Advantage</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <h5 class="mb-3">Exceptional Academic Programs</h5>
+                <p>We offer a balanced curriculum that combines academic rigor with extracurricular activities to develop well-rounded individuals.</p>
+                <h5 class="mb-3">Dedicated Teachers</h5>
+                <p>Our faculty members are highly qualified and committed to nurturing every student's potential.</p>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                <h5 class="mb-3">State-of-the-Art Facilities</h5>
+                <p>From modern classrooms to well-equipped labs and sports facilities, our campus supports excellence in all areas.</p>
+                <h5 class="mb-3">Community & Values</h5>
+                <p>We foster a caring environment that emphasizes character building, integrity, and respect for all.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Why Choose Us End -->
+
+{% endblock %}

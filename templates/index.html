@@ -1,0 +1,1346 @@
+
+{% extends 'base.html' %}
+{%load static%}
+
+{% block title %}
+Home - Kingstone High School
+{% endblock %}
+
+{% block content %}
+<style>
+    /* Container for Vision, Mission, and Motto Sections */
+.vision-mission-box {
+    background-color: #ffffff; /* White background */
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.vision-mission-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Inside layer */
+.vision-mission-inner {
+    position: relative;
+    z-index: 2;
+}
+
+/* Title styles */
+.vision-mission-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #28a745; /* Green */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #28a745;
+    transition: color 0.3s ease;
+}
+
+/* Text styles */
+.vision-mission-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effect on Title */
+.vision-mission-box:hover .vision-mission-title {
+    color: #006400; /* Dark green */
+}
+
+/* Hover Effect on Text */
+.vision-mission-box:hover .vision-mission-text {
+    color: #333;
+}
+
+/* Decorative effects: Circle overlay for extra style */
+.vision-mission-box:before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(40, 167, 69, 0.1);
+    border-radius: 50%;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+/* Adding another circular layer effect */
+.vision-mission-box:after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(40, 167, 69, 0.15);
+    border-radius: 50%;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect on Circle */
+.vision-mission-box:hover:before,
+.vision-mission-box:hover:after {
+    width: 250px;
+    height: 250px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .vision-mission-box {
+        padding: 30px;
+        margin-bottom: 40px;
+    }
+    .vision-mission-title {
+        font-size: 2rem;
+    }
+    .vision-mission-text {
+        font-size: 1rem;
+    }
+}
+
+/* Vision-Mission Box Styling */
+.vision-mission-box {
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.vision-mission-inner {
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.vision-icon {
+    background-color: #f0f9ff;
+    padding: 20px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+
+/* General Layout */
+.container-xxl {
+    background: linear-gradient(180deg, #ffffff, #f0f5f5);
+    padding: 60px 0;
+}
+
+/* Image Styling */
+.headteacher-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.headteacher-image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.headteacher-image-container:hover img {
+    transform: scale(1.05);
+}
+
+/* Image Caption */
+.image-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 128, 0, 0.9);
+    color: white;
+    padding: 10px 20px;
+    border-top-right-radius: 10px;
+}
+
+/* Message Section */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+h6 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.text-muted {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #6c757d !important;
+}
+
+.text-success {
+    color: #28a745 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .headteacher-image-container img {
+        height: auto;
+        max-height: 300px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+
+    .text-muted {
+        font-size: 1rem;
+    }
+}
+
+.best-students {
+        background: linear-gradient(to bottom, #e9f7ef, #ffffff);
+    }
+
+    .best-students h2 {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    .best-students .card {
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .best-students .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .best-students .card-img-top {
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .best-students .card-title {
+        color: #0f3443;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .best-students .card-text {
+        font-size: 0.9rem;
+    }
+
+    /* General Section Styling */
+    .best-students {
+        background: linear-gradient(135deg, #e0f7fa, #ffffff);
+        padding: 80px 0;
+    }
+    
+    /* Section Header */
+    .section-title {
+        font-size: 2.5rem;
+        color: #0f3443;
+        text-transform: uppercase;
+        position: relative;
+        margin-bottom: 1rem;
+    }
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: #34e89e;
+        margin: 0.5rem auto 0;
+    }
+    .section-subtitle {
+        font-size: 1rem;
+        color: #6c757d;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    /* Student Card Styling */
+    .student-card {
+        background: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .student-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.15);
+    }
+    .card-image {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+        border-bottom: 5px solid #34e89e;
+    }
+    .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .ribbon {
+        position: absolute;
+        top: 15px;
+        left: -10px;
+        background: linear-gradient(135deg, #34e89e, #0f3443);
+        color: #ffffff;
+        font-size: 0.85rem;
+        font-weight: bold;
+        padding: 8px 20px;
+        text-transform: uppercase;
+        transform: rotate(-15deg);
+        border-radius: 5px;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Card Content */
+    .card-content {
+        padding: 20px;
+    }
+    .student-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #0f3443;
+        margin-bottom: 0.5rem;
+    }
+    .student-details {
+        font-size: 1rem;
+        color: #6c757d;
+        margin-bottom: 1rem;
+    }
+    .student-points {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #34e89e;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .section-title {
+            font-size: 2rem;
+        }
+        .card-image {
+            height: 180px;
+        }
+    }
+
+      /* Global Section Styling */
+    section {
+        padding: 60px 0;
+    }
+    section h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+
+    /* Light Blue Background */
+    .bg-light-blue {
+        background-color: #dff6ff; /* Light blue shade */
+    }
+    .text-dark {
+        color: #2c3e50;
+    }
+
+    /* Card Styling */
+    .card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+    .card img {
+        height: 200px;
+        object-fit: cover;
+    }
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #34495e;
+    }
+    .card-text {
+        color: #7f8c8d;
+    }
+
+    /* Buttons */
+    .btn-primary {
+        background-color: #3498db;
+        border-color: #3498db;
+    }
+    .btn-primary:hover {
+        background-color: #2980b9;
+        border-color: #2980b9;
+    }
+
+    
+
+    .card {
+        border-radius: 12px;
+        overflow: hidden;
+        background-color: #ffffff;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        padding: 25px 20px;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 10px;
+        transition: color 0.3s ease;
+    }
+
+    .card-title:hover {
+        color: #28a745;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #6c757d;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        flex-grow: 1;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .btn-primary:hover {
+        background-color: #0069d9;
+        transform: translateY(-5px);
+    }
+
+    .fas.fa-calendar-alt {
+        font-size: 1.6rem;
+    }
+
+    .fas.fa-calendar-check,
+    .fas.fa-newspaper {
+        font-size: 1.4rem;
+    }
+
+    .fas.fa-file-alt,
+    .fas.fa-bell {
+        font-size: 1.2rem;
+    }
+
+    .card-footer {
+        background-color: #343a40;
+        padding: 15px 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: white !important;
+        position: relative;
+        text-align: center;
+    }
+
+    .card-footer p {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+
+    /* Marquee Title Styling */
+.marquee-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 25px;
+}
+
+/* General Styles */
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+.info-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.info-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Styles */
+.icon-box {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Button Styles */
+.btn-primary {
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* Typography */
+h5 {
+    font-weight: 700;
+}
+
+
+
+
+
+
+</style>
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5">
+        <div class="owl-carousel header-carousel position-relative">
+            <!-- Slide 1 -->
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" style="height: 700px; object-fit: cover;" src="static/img/1.jpeg" alt="Kingstone High School Welcome">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Welcome to Kingstone High School</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Excellence in Education</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">Providing a holistic and empowering education for the next generation of leaders and innovators.</p>
+                                <a href="{% url 'about' %}" class="btn btn-success py-md-3 px-md-5 me-3 animated slideInLeft">Learn More</a>
+                                <a href="{% url 'apply_now' %}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" style="height: 700px; object-fit: cover;" src="static/img/13.jpeg" alt="Quality Education">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Shaping Bright Futures</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Academic Excellence and Beyond</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">Explore our comprehensive curriculum and dynamic extracurricular activities tailored to nurture every student’s potential.</p>
+                                <a href="{% url 'about' %}" class="btn btn-success py-md-3 px-md-5 me-3 animated slideInLeft">Learn More</a>
+                                <a href="{% url 'apply_now' %}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" style="height: 700px; object-fit: cover;" src="static/img/14.jpeg" alt="Innovative Learning">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Innovative Learning</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Embracing Modern Teaching Methods</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">Equipping students with 21st-century skills to thrive in a competitive world.</p>
+                                <a href="{% url 'about' %}" class="btn btn-success py-md-3 px-md-5 me-3 animated slideInLeft">Learn More</a>
+                                <a href="{% url 'apply_now' %}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 4 -->
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" style="height: 700px; object-fit: cover;" src="static/img/4.jpeg" alt="Cultural Diversity">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Cultural Diversity</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Unity in Diversity</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">Fostering a sense of community and respect for different cultures.</p>
+                                <a href="{% url 'about' %}" class="btn btn-success py-md-3 px-md-5 me-3 animated slideInLeft">Learn More</a>
+                                <a href="{% url 'apply_now' %}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 5 -->
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" style="height: 700px; object-fit: cover;" src="static/img/6.jpeg" alt="Extracurricular Activities">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Extracurricular Activities</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Beyond Academics</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">Encouraging students to explore their interests and talents outside the classroom.</p>
+                                <a href="{% url 'about' %}" class="btn btn-success py-md-3 px-md-5 me-3 animated slideInLeft">Learn More</a>
+                                <a href="{% url 'apply_now' %}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 6 -->
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" style="height: 700px; object-fit: cover;" src="static/img/11.jpeg" alt="Kingstone Facilities">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">State-of-the-Art Facilities</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Inspiring Spaces</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">World-class facilities to enhance learning and inspire creativity.</p>
+                                <a href="{% url 'about' %}" class="btn btn-success py-md-3 px-md-5 me-3 animated slideInLeft">Learn More</a>
+                                <a href="{% url 'apply_now' %}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+      
+    
+    
+    
+    <!-- Carousel End -->
+
+
+    <!-- mission vision-->
+    <div class="container-xxl py-5" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Vision Section -->
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="vision-mission-box text-center">
+                        <div class="vision-mission-inner p-4 bg-white shadow-sm rounded">
+                            <div class="vision-icon mb-3">
+                                <i class="fas fa-lightbulb fa-3x text-primary"></i>
+                            </div>
+                            <h3 class="vision-mission-title mb-3">Our Vision</h3>
+                            <p class="vision-mission-text text-muted">To be a leading institution that provides quality education, fostering innovation, integrity, and global citizenship, empowering students to excel in a dynamic world.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Mission Section -->
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="vision-mission-box text-center">
+                        <div class="vision-mission-inner p-4 bg-white shadow-sm rounded">
+                            <div class="vision-icon mb-3">
+                                <i class="fas fa-bullhorn fa-3x text-success"></i>
+                            </div>
+                            <h3 class="vision-mission-title mb-3">Our Mission</h3>
+                            <p class="vision-mission-text text-muted">To empower our students with knowledge, critical thinking, and life skills in an inclusive environment that nurtures their potential and prepares them for leadership in a rapidly evolving world.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Motto Section -->
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="vision-mission-box text-center">
+                        <div class="vision-mission-inner p-4 bg-white shadow-sm rounded">
+                            <div class="vision-icon mb-3">
+                                <i class="fas fa-trophy fa-3x text-warning"></i>
+                            </div>
+                            <h3 class="vision-mission-title mb-3">Our Motto</h3>
+                            <p class="vision-mission-text text-muted">"Excellence in Education, Empowerment for the Future."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- Service End -->
+
+
+    <!-- Head Teachers message -->
+    <div class="container-xxl py-5" style="background: #f7f9fa;">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Image Section -->
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="headteacher-image-container position-relative">
+                        <img class="img-fluid rounded-3 shadow-lg" src="static/img/head teacher.jpeg" alt="Headteacher">
+                        <div class="image-caption position-absolute bottom-0 start-0 bg-primary text-white px-4 py-2">
+                            <h5 class="mb-0">Headteacher</h5>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Message Section -->
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="p-4">
+                        <h6 class="text-uppercase text-success fw-bold mb-2">Message from the Headteacher</h6>
+                        <h1 class="text-dark fw-bold mb-4">Welcome to Kingstone High School</h1>
+                        <p class="text-muted mb-4" style="font-size: 1.1rem;">
+                            At Kingstone High School, we foster excellence and aim to nurture future men and women of substance by equipping them with knowledge, skills, and strong values. We focus on holistic education, balancing academics, creativity, and community engagement.
+                        </p>
+                        <p class="text-muted mb-4" style="font-size: 1.1rem;">
+                            Our school thrives on a supportive environment, modern facilities, and a commitment to every student's success. Thank you for entrusting us with your child’s education. Together, we’ll create a bright future.
+                        </p>
+                        <h5 class="text-dark">Headteacher, Kingstone High School</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- info -->
+    <div class="container-xxl py-5 bg-light">
+        <div class="container">
+            <!-- Marquee Title -->
+            <div class="marquee-title bg-primary text-white py-2 mb-5 rounded">
+                <marquee behavior="scroll" direction="left" scrollamount="6">
+                    Welcome to Our School – Excellence in Education & Beyond!
+                </marquee>
+            </div>
+    
+            <!-- Section Header -->
+            <div class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">School Info</h6>
+                <h1 class="mb-4">Connect With Us</h1>
+            </div>
+            <div class="row g-4">
+                <!-- Address Section -->
+                <div class="col-md-6 col-lg-3 text-center wow zoomIn" data-wow-delay="0.1s">
+                    <div class="info-item bg-white p-4 shadow-lg rounded">
+                        <div class="icon-box bg-primary text-white rounded-circle mx-auto mb-4">
+                            <i class="fa fa-map-marker-alt fa-2x"></i>
+                        </div>
+                        <h5 class="mb-3">School Address</h5>
+                        <p>Kingstone High School</p>
+                        <p>Kawempe Kazo Angola Kampala</p>
+                        <p>P.O Box 25062</p>
+                    </div>
+                </div>
+    
+                <!-- Office Hours Section -->
+                <div class="col-md-6 col-lg-3 text-center wow zoomIn" data-wow-delay="0.3s">
+                    <div class="info-item bg-white p-4 shadow-lg rounded">
+                        <div class="icon-box bg-success text-white rounded-circle mx-auto mb-4">
+                            <i class="fa fa-clock fa-2x"></i>
+                        </div>
+                        <h5 class="mb-3">Office Hours</h5>
+                        <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+                        <p>Sat: 9:00 AM - 1:00 PM</p>
+                    </div>
+                </div>
+    
+                <!-- Contact Section -->
+                <div class="col-md-6 col-lg-3 text-center wow zoomIn" data-wow-delay="0.5s">
+                    <div class="info-item bg-white p-4 shadow-lg rounded">
+                        <div class="icon-box bg-danger text-white rounded-circle mx-auto mb-4">
+                            <i class="fa fa-phone-alt fa-2x"></i>
+                        </div>
+                        <h5 class="mb-3">Contact Us</h5>
+                        <p>0772656664/0703300188</p>
+                        <p>0752264366</p>
+                        <p>0757560242</p>
+                        <p>0702473554</p>
+                        <p>Kingstonehighschool892@gmail.com</p>
+                    </div>
+                </div>
+    
+                <!-- Admissions Section -->
+                <div class="col-md-6 col-lg-3 text-center wow zoomIn" data-wow-delay="0.7s">
+                    <div class="info-item bg-white p-4 shadow-lg rounded">
+                        <div class="icon-box bg-warning text-white rounded-circle mx-auto mb-4">
+                            <i class="fa fa-user-graduate fa-2x"></i>
+                        </div>
+                        <h5 class="mb-3">Admissions Open</h5>
+                        <p>Enroll now for the new academic year!</p>
+                        <a href="/admissions" class="btn btn-primary btn-sm mt-2">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    
+    <!-- About End -->
+    
+    <section class="best-students py-5">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="text-center mb-5 position-relative wow fadeInUp" data-wow-delay="0.1s">
+                <h2 class="fw-bold ">🏆 Best UACE Students</h2>
+                <p class='text-muted section-subtitle fs-5 mb-5'>
+                    Recognizing brilliance and determination in academic excellence.
+                </p>
+                
+            </div>
+    
+            <!-- Student Cards -->
+            <div class="row gy-5 gx-4">
+                <!-- Student Card 1 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="student-card shadow-lg">
+                        <div class="card-image">
+                            <img src="{% static 'img/13.jpeg' %}" alt="Student 1">
+                            <div class="ribbon">Top Achiever</div>
+                        </div>
+                        <div class="card-content p-4 text-center">
+                            <h5 class="student-name">John Doe</h5>
+                            <p class="student-details">Physics, Chemistry, Mathematics</p>
+                            <span class="student-points text-success fw-bold">20 Points</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Student Card 2 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="student-card shadow-lg">
+                        <div class="card-image">
+                            <img src="{% static 'img/12.jpeg' %}" alt="Student 2">
+                            <div class="ribbon">Excellence</div>
+                        </div>
+                        <div class="card-content p-4 text-center">
+                            <h5 class="student-name">Jane Smith</h5>
+                            <p class="student-details">Biology, Chemistry, Geography</p>
+                            <span class="student-points text-success fw-bold">19 Points</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Student Card 3 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="student-card shadow-lg">
+                        <div class="card-image">
+                            <img src="{% static 'img/5.jpeg' %}" alt="Student 3">
+                            <div class="ribbon">Star Performer</div>
+                        </div>
+                        <div class="card-content p-4 text-center">
+                            <h5 class="student-name">Michael Lee</h5>
+                            <p class="student-details">Economics, Mathematics, ICT</p>
+                            <span class="student-points text-success fw-bold">18 Points</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="best-students py-5">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <h2 class="fw-bold text-dark">🏅 Best UCE Students</h2>
+                <p class="text-muted section-subtitle fs-4 mb-4">
+                    Celebrating academic excellence and achievement.
+                </p>
+            </div>
+    
+            <!-- Student Cards -->
+            <div class="row gy-5 gx-4">
+                <!-- Student Card 1 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="student-card shadow-lg">
+                        <div class="card-image">
+                            <img src="{% static 'img/1.jpeg' %}" alt="Student 1">
+                            <div class="ribbon">Top Achiever</div>
+                        </div>
+                        <div class="card-content p-4 text-center">
+                            <h5 class="student-name">John Doe</h5>
+                            <p class="student-details">Physics, Chemistry, Mathematics</p>
+                            <span class="student-points text-success fw-bold">20 Points</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Student Card 2 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="student-card shadow-lg">
+                        <div class="card-image">
+                            <img src="{% static 'img/6.jpeg' %}" alt="Student 2">
+                            <div class="ribbon">Excellence</div>
+                        </div>
+                        <div class="card-content p-4 text-center">
+                            <h5 class="student-name">Jane Smith</h5>
+                            <p class="student-details">Biology, Chemistry, Geography</p>
+                            <span class="student-points text-success fw-bold">19 Points</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Student Card 3 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="student-card shadow-lg">
+                        <div class="card-image">
+                            <img src="{% static 'img/4.jpeg' %}" alt="Student 3">
+                            <div class="ribbon">Star Performer</div>
+                        </div>
+                        <div class="card-content p-4 text-center">
+                            <h5 class="student-name">Michael Lee</h5>
+                            <p class="student-details">Economics, Mathematics, ICT</p>
+                            <span class="student-points text-success fw-bold">18 Points</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+  
+    <!-- Our facilities -->
+    <div class="container-xxl py-5 category">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Our Focus</h6>
+                <h1 class="mb-5">Explore Our Outstanding Facilities</h1>
+            </div>
+            <div class="row g-3">
+                <div class="col-lg-7 col-md-6">
+                    <div class="row g-3">
+                        <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
+                            <a class="position-relative d-block overflow-hidden" href="">
+                                <img class="img-fluid" src="static/img/6.jpeg" alt="Academics">
+                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
+                                    <h5 class="m-0">Academics</h5>
+                                    <small class="text-primary">High-quality education for all grade levels</small>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
+                            <a class="position-relative d-block overflow-hidden" href="">
+                                <img class="img-fluid" src="static/img/computer lab.jpeg" alt="Computer Lab">
+                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
+                                    <h5 class="m-0">Computer Lab</h5>
+                                    <small class="text-primary">Equipped with modern technology</small>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
+                            <a class="position-relative d-block overflow-hidden" href="">
+                                <img class="img-fluid" src="static/img/library.jpeg" alt="Library">
+                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
+                                    <h5 class="m-0">Library</h5>
+                                    <small class="text-primary">A vast collection of books and digital resources</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
+                    <a class="position-relative d-block h-100 overflow-hidden" href="">
+                        <img class="img-fluid position-absolute w-100 h-100" src="static/img/agri.jpeg" alt="Agriculture" style="object-fit: cover;">
+                        <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
+                            <h5 class="m-0">Agriculture</h5>
+                            <small class="text-primary">Promoting practical and sustainable farming</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- Our facilities -->
+
+
+    <!-- Courses Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-transparent text-center text-primary px-3 py-2" style="font-size: 1.5rem; letter-spacing: 1px;">Our Co-Curricular Activities</h6>
+                <h1 class="mb-5" style="font-size: 2.7rem; font-weight: 600; color: #2c3e50;">Explore Our Exciting Activities</h1>
+            </div>
+    
+            <!-- Activities Grid -->
+            <div class="row g-4 justify-content-center">
+                <!-- Sports Activities Section -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="program-item bg-light text-center p-4 shadow-sm rounded-4" style="transition: transform 0.3s ease-in-out; border: 2px solid #1abc9c;">
+                        <div class="mb-4">
+                            <i class="fa fa-futbol fa-4x text-success" style="font-size: 3.5rem;"></i>
+                        </div>
+                        <h3 class="mb-3" style="color: #34495e; font-size: 1.6rem; font-weight: 500;">Sports Activities</h3>
+                        <p class="mb-4 text-muted" style="font-size: 1rem;">Engage in various sports to improve physical health and teamwork.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small><i class="fa fa-user-tie text-success me-2"></i> Coach John</small>
+                            <small><i class="fa fa-clock text-success me-2"></i> 2.00 Hrs</small>
+                            <small><i class="fa fa-users text-success me-2"></i> 80 Participants</small>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Drama and Performing Arts Section -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="program-item bg-light text-center p-4 shadow-sm rounded-4" style="transition: transform 0.3s ease-in-out; border: 2px solid #f39c12;">
+                        <div class="mb-4">
+                            <i class="fa fa-theater-masks fa-4x text-warning" style="font-size: 3.5rem;"></i>
+                        </div>
+                        <h3 class="mb-3" style="color: #34495e; font-size: 1.6rem; font-weight: 500;">Drama and Performing Arts</h3>
+                        <p class="mb-4 text-muted" style="font-size: 1rem;">Showcase your creativity through drama and performance.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small><i class="fa fa-user-tie text-warning me-2"></i> Ms. Laura</small>
+                            <small><i class="fa fa-clock text-warning me-2"></i> 1.30 Hrs</small>
+                            <small><i class="fa fa-users text-warning me-2"></i> 60 Participants</small>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Music and Dance Section -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="program-item bg-light text-center p-4 shadow-sm rounded-4" style="transition: transform 0.3s ease-in-out; border: 2px solid #e74c3c;">
+                        <div class="mb-4">
+                            <i class="fa fa-music fa-4x text-danger" style="font-size: 3.5rem;"></i>
+                        </div>
+                        <h3 class="mb-3" style="color: #34495e; font-size: 1.6rem; font-weight: 500;">Music and Dance</h3>
+                        <p class="mb-4 text-muted" style="font-size: 1rem;">Discover your rhythm and talent in music and dance.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small><i class="fa fa-user-tie text-danger me-2"></i> Mr. David</small>
+                            <small><i class="fa fa-clock text-danger me-2"></i> 2.00 Hrs</small>
+                            <small><i class="fa fa-users text-danger me-2"></i> 100 Participants</small>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Debating and Public Speaking Section -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="program-item bg-light text-center p-4 shadow-sm rounded-4" style="transition: transform 0.3s ease-in-out; border: 2px solid #3498db;">
+                        <div class="mb-4">
+                            <i class="fa fa-comments fa-4x text-primary" style="font-size: 3.5rem;"></i>
+                        </div>
+                        <h3 class="mb-3" style="color: #34495e; font-size: 1.6rem; font-weight: 500;">Debating and Public Speaking</h3>
+                        <p class="mb-4 text-muted" style="font-size: 1rem;">Sharpen your communication and leadership skills through debating and public speaking.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small><i class="fa fa-user-tie text-primary me-2"></i> Ms. Rachel</small>
+                            <small><i class="fa fa-clock text-primary me-2"></i> 1.00 Hr</small>
+                            <small><i class="fa fa-users text-primary me-2"></i> 50 Participants</small>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Visual Arts Section -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.9s">
+                    <div class="program-item bg-light text-center p-4 shadow-sm rounded-4" style="transition: transform 0.3s ease-in-out; border: 2px solid #9b59b6;">
+                        <div class="mb-4">
+                            <i class="fa fa-paint-brush fa-4x text-purple" style="font-size: 3.5rem;"></i>
+                        </div>
+                        <h3 class="mb-3" style="color: #34495e; font-size: 1.6rem; font-weight: 500;">Visual Arts</h3>
+                        <p class="mb-4 text-muted" style="font-size: 1rem;">Explore your creativity through drawing, painting, and design.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small><i class="fa fa-user-tie text-purple me-2"></i> Mr. Simon</small>
+                            <small><i class="fa fa-clock text-purple me-2"></i> 1.30 Hrs</small>
+                            <small><i class="fa fa-users text-purple me-2"></i> 40 Participants</small>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Gardening Section -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="1.1s">
+                    <div class="program-item bg-light text-center p-4 shadow-sm rounded-4" style="transition: transform 0.3s ease-in-out; border: 2px solid #2ecc71;">
+                        <div class="mb-4">
+                            <i class="fa fa-leaf fa-4x text-success" style="font-size: 3.5rem;"></i>
+                        </div>
+                        <h3 class="mb-3" style="color: #34495e; font-size: 1.6rem; font-weight: 500;">Gardening</h3>
+                        <p class="mb-4 text-muted" style="font-size: 1rem;">Learn to grow plants and take care of the environment.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small><i class="fa fa-user-tie text-success me-2"></i> Ms. Flora</small>
+                            <small><i class="fa fa-clock text-success me-2"></i> 1.00 Hr</small>
+                            <small><i class="fa fa-users text-success me-2"></i> 30 Participants</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <!-- Courses End -->
+     
+
+    
+
+    <!-- Why Choose Kingstone High School -->
+    <div class="container-xxl py-5" style="background: linear-gradient(to bottom, #ffffff, #f0f8ff);">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <marquee behavior="scroll" direction="left" scrollamount="8" class="d-block bg-primary text-white py-2 mb-4 rounded-pill shadow-sm" 
+                style="font-size: 1.5rem; font-weight: 600; letter-spacing: 1px;">
+                Welcome to Kingstone High School - Empowering Future Leaders!
+            </marquee>
+                <h1 class="mb-5" style="font-size: 3rem; font-weight: 700; color: #2c3e50; letter-spacing: 1px;">
+                    Why Choose Kingstone High School?
+                </h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Quality Education -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="program-item bg-white text-center p-4 rounded shadow-lg" style="transition: all 0.3s; border-top: 5px solid #3498db;">
+                        <div class="icon-box mb-4">
+                            <i class="fa fa-book-open text-primary" style="font-size: 60px;"></i>
+                        </div>
+                        <h3 class="mb-3" style="color: #34495e;">Quality Education</h3>
+                        <p style="color: #7f8c8d;">Providing a well-rounded education that prepares students for the future.</p>
+                        <small class="text-primary"><i class="fa fa-check-circle me-2"></i>New Curriculum Excellence</small>
+                    </div>
+                </div>
+    
+                <!-- Experienced Teachers -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="program-item bg-white text-center p-4 rounded shadow-lg" style="transition: all 0.3s; border-top: 5px solid #2ecc71;">
+                        <div class="icon-box mb-4">
+                            <i class="fa fa-user-tie text-success" style="font-size: 60px;"></i>
+                        </div>
+                        <h3 class="mb-3" style="color: #34495e;">Experienced and Passionate Teachers</h3>
+                        <p style="color: #7f8c8d;">Our team of educators are committed to nurturing and guiding each student.</p>
+                        <small class="text-success"><i class="fa fa-user-tie me-2"></i>Qualified Educators</small>
+                    </div>
+                </div>
+    
+                <!-- State-of-the-Art Facilities -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="program-item bg-white text-center p-4 rounded shadow-lg" style="transition: all 0.3s; border-top: 5px solid #e74c3c;">
+                        <div class="icon-box mb-4">
+                            <i class="fa fa-building text-danger" style="font-size: 60px;"></i>
+                        </div>
+                        <h3 class="mb-3" style="color: #34495e;">State-of-the-Art Facilities</h3>
+                        <p style="color: #7f8c8d;">Equipped classrooms, sports facilities, and modern technology to enhance learning.</p>
+                        <small class="text-danger"><i class="fa fa-building me-2"></i>Modern Infrastructure</small>
+                    </div>
+                </div>
+    
+                <!-- Holistic Development -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="program-item bg-white text-center p-4 rounded shadow-lg" style="transition: all 0.3s; border-top: 5px solid #9b59b6;">
+                        <div class="icon-box mb-4">
+                            <i class="fa fa-graduation-cap text-purple" style="font-size: 60px;"></i>
+                        </div>
+                        <h3 class="mb-3" style="color: #34495e;">Holistic Development</h3>
+                        <p style="color: #7f8c8d;">Fostering both academic excellence and personal growth.</p>
+                        <small class="text-purple"><i class="fa fa-graduation-cap me-2"></i>Academic & Personal Growth</small>
+                    </div>
+                </div>
+    
+                <!-- Community and Values -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.9s">
+                    <div class="program-item bg-white text-center p-4 rounded shadow-lg" style="transition: all 0.3s; border-top: 5px solid #f39c12;">
+                        <div class="icon-box mb-4">
+                            <i class="fa fa-handshake text-warning" style="font-size: 60px;"></i>
+                        </div>
+                        <h3 class="mb-3" style="color: #34495e;">Strong Sense of Community and Values</h3>
+                        <p style="color: #7f8c8d;">Building a sense of belonging and instilling important values for life.</p>
+                        <small class="text-warning"><i class="fa fa-handshake me-2"></i>Building Future Leaders</small>
+                    </div>
+                </div>
+    
+                <!-- Extracurricular Opportunities -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="1.1s">
+                    <div class="program-item bg-white text-center p-4 rounded shadow-lg" style="transition: all 0.3s; border-top: 5px solid #1abc9c;">
+                        <div class="icon-box mb-4">
+                            <i class="fa fa-futbol text-info" style="font-size: 60px;"></i>
+                        </div>
+                        <h3 class="mb-3" style="color: #34495e;">Numerous Extracurricular Opportunities</h3>
+                        <p style="color: #7f8c8d;">A variety of clubs and activities to help students explore their passions.</p>
+                        <small class="text-info"><i class="fa fa-futbol me-2"></i>Sports & Arts</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+<!-- Upcoming Events Section -->
+<section class="py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <h1 class="text-center text-primary mb-5 wow fadeInUp" data-wow-delay="0.3s">
+            <i class="fas fa-calendar-alt" style="color: #007bff; margin-right: 10px;"></i> Upcoming Events
+        </h1>
+        <div class="row">
+            {% for event in events %}
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+                <div class="card h-100 border-0 rounded-4 shadow-lg d-flex flex-column" style="transition: all 0.4s ease, box-shadow 0.4s ease;">
+                    {% if event.image %}
+                    <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}" style="object-fit: cover; height: 250px; transition: opacity 0.3s ease;">
+                    {% endif %}
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h5 class="card-title text-dark mb-3">
+                            <i class="fas fa-calendar-check text-success me-2"></i> {{ event.title }}
+                        </h5>
+                        <p class="card-text text-muted flex-grow-1">
+                            <i class="fas fa-file-alt me-2 text-secondary"></i> {{ event.description|truncatechars:120 }}
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small class="text-primary">
+                                <i class="fas fa-calendar-day me-1"></i> {{ event.date }}
+                            </small>
+                            {% if event.link %}
+                            <a href="{{ event.link }}" class="btn btn-primary btn-sm">Learn More</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="card-footer text-center bg-dark text-white">
+                        <p class="mb-0"><i class="fas fa-bell me-2"></i> Stay Updated!</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<!-- Latest News Section -->
+<section class="py-5" style="background-color: #f4f6f9;">
+    <div class="container">
+        <h1 class="text-center text-primary mb-5 wow fadeInUp" data-wow-delay="0.3s">
+            <i class="fas fa-bullhorn me-2 text-primary"></i> Latest News
+        </h1>
+        <div class="row">
+            {% for news_item in news %}
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+                <div class="card h-100 border-0 rounded-4 shadow-lg d-flex flex-column" style="transition: all 0.4s ease;">
+                    {% if news_item.image %}
+                    <img src="{{ news_item.image.url }}" class="card-img-top" alt="{{ news_item.title }}" style="object-fit: cover; height: 250px; transition: opacity 0.3s ease;">
+                    {% endif %}
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h5 class="card-title text-dark mb-3">
+                            <i class="fas fa-newspaper text-success me-2"></i> {{ news_item.title }}
+                        </h5>
+                        <p class="card-text text-muted flex-grow-1">
+                            <i class="fas fa-file-alt me-2 text-secondary"></i> {{ news_item.description|truncatechars:120 }}
+                        </p>
+                        {% if news_item.link %}
+                        <a href="{{ news_item.link }}" class="btn btn-success btn-sm mt-3">Read More</a>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer text-center bg-dark text-white">
+                        <p class="mb-0"><i class="fas fa-bell me-2"></i> Stay Informed!</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="section-title bg-white text-center text-primary px-3 py-2 rounded-pill d-inline-block">Student Testimonials</h6>
+                <h1 class="mb-4 font-weight-bold">What Our Students Say!</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel position-relative">
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-3 mx-auto mb-4" src="static/img/12.jpeg" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #f8f9fa;">
+                    <h5 class="mb-0 font-weight-bold">John Doe</h5>
+                    <p class="text-muted mb-3">Teacher</p>
+                    <div class="testimonial-text bg-white text-center p-4 shadow-lg rounded">
+                        <p class="mb-0 text-muted">"Kingstone High School provided me with an excellent academic foundation and helped me discover my passion for science. The teachers are very supportive, and the environment is conducive to learning."</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-3 mx-auto mb-4" src="static/img/12.jpeg" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #f8f9fa;">
+                    <h5 class="mb-0 font-weight-bold">Sarah White</h5>
+                    <p class="text-muted mb-3">Student</p>
+                    <div class="testimonial-text bg-white text-center p-4 shadow-lg rounded">
+                        <p class="mb-0 text-muted">"I am so grateful for the skills and experiences I gained during my time at Kingstone. The extracurricular activities gave me a chance to grow beyond the classroom, and I made lifelong friends here."</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-3 mx-auto mb-4" src="static/img/12.jpeg" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #f8f9fa;">
+                    <h5 class="mb-0 font-weight-bold">Mark Adams</h5>
+                    <p class="text-muted mb-3">Teacher</p>
+                    <div class="testimonial-text bg-white text-center p-4 shadow-lg rounded">
+                        <p class="mb-0 text-muted">"At Kingstone High, I feel empowered to achieve my best. The teachers truly care about our success, and the school offers a great balance between academics and fun activities."</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-3 mx-auto mb-4" src="static/img/12.jpeg" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #f8f9fa;">
+                    <h5 class="mb-0 font-weight-bold">Emily Collins</h5>
+                    <p class="text-muted mb-3">Student</p>
+                    <div class="testimonial-text bg-white text-center p-4 shadow-lg rounded">
+                        <p class="mb-0 text-muted">"The learning experience at Kingstone High School was incredible. I was pushed to do my best, but I also had so much fun participating in clubs and sports. It was the perfect environment to grow both academically and socially."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- Testimonial End -->
+
+    <!-- map -->
+
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="section-title bg-white text-center text-primary px-3 py-2 rounded-pill d-inline-block">Find Us</h6>
+                <h1 class="mb-4 font-weight-bold">Our Location</h1>
+            </div>
+            <div class="map-container shadow-lg rounded">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3189.5083360134777!2d32.5553884!3d0.3647268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbabfbcf1db53%3A0xa299de18ac31225f!2sKingstone%20High%20School!5e0!3m2!1sen!2sug!4v1674825570905!5m2!1sen!2sug" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+    
+        
+
+  
+
+
+ 
+{% endblock %}

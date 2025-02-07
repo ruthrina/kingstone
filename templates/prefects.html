@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Prefects - Kingstone High School
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section Start -->
+<section class="hero-prefects position-relative text-center py-5" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{% static "img/1.jpeg" %}') no-repeat center center; background-size: cover;">
+    <div class="container">
+        <h1 class="display-4 text-white fw-bold animated fadeInDown">Prefectorial Body</h1>
+        <p class="text-light animated fadeInUp" style="animation-delay: 0.3s;">
+            Guiding Excellence, Shaping Futures
+        </p>
+    </div>
+</section>
+<!-- Hero Section End -->
+
+<!-- Marquee Start -->
+<div class="container-fluid bg-primary py-3">
+    <marquee behavior="scroll" direction="left" class="text-white fw-bold">
+        Celebrating Leadership at Kingstone High School - Inspiring Role Models!
+    </marquee>
+</div>
+<!-- Marquee End -->
+
+<!-- Prefects Spotlight Start -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-primary animated fadeInUp">Spotlight on Leadership</h2>
+            <p class="text-muted animated fadeInUp" style="animation-delay: 0.3s;">
+                Meet the dynamic individuals who inspire their peers and drive positive change in our school.
+            </p>
+        </div>
+        <div class="row g-4">
+            <!-- Head Prefect -->
+            <div class="col-lg-6">
+                <div class="row g-4">
+                    {% for prefect in prefects %}
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm text-center animated fadeInUp" style="animation-delay: 0.6s;">
+                                <img src="{{ prefect.photo.url }}" alt="{{ prefect.title }}" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 class="text-primary fw-bold">{{ prefect.name }}</h5>
+                                    <p class="text-muted">{{ prefect.title }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</section>
+<!-- Prefects Spotlight End -->
+
+<!-- Testimonials Section Start -->
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-primary animated fadeInUp">What Students Say</h2>
+            <p class="text-muted animated fadeInUp" style="animation-delay: 0.3s;">
+                Hear how our prefects inspire and support the student community.
+            </p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-center p-3 animated fadeIn" style="animation-delay: 0.5s;">
+                    <p>"The prefects bring a sense of unity and purpose to our school. They're true role models!"</p>
+                    <h6 class="fw-bold mt-3">- Sarah M., Senior 3</h6>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-center p-3 animated fadeIn" style="animation-delay: 0.6s;">
+                    <p>"Their leadership inspires me to strive for excellence in every area of my life."</p>
+                    <h6 class="fw-bold mt-3">- Daniel K., Senior 5</h6>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-center p-3 animated fadeIn" style="animation-delay: 0.7s;">
+                    <p>"They've taught us that leadership is about service and responsibility."</p>
+                    <h6 class="fw-bold mt-3">- Jessica T., Senior 4</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Testimonials Section End -->
+
+<!-- Call to Action Start -->
+<div class="bg-primary py-5">
+    <div class="container text-center">
+        <h2 class="text-white animated fadeInDown">Ready to Lead?</h2>
+        <p class="text-white mb-4 animated fadeInUp" style="animation-delay: 0.3s;">
+            Join our Prefectorial Body and make a lasting impact on our school community.
+        </p>
+        <a href="/contact/" class="btn btn-warning btn-lg text-dark animated bounceIn" style="animation-delay: 0.6s;">Apply Now</a>
+    </div>
+</div>
+<!-- Call to Action End -->
+{% endblock %}

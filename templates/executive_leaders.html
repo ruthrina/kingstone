@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block title %}
+Executive Leaders - Kingstone High School
+{% endblock %}
+
+{% block content %}
+<style>
+    .marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.timeline-item {
+    border-left: 4px solid var(--bs-success);
+    position: relative;
+    padding-left: 40px;
+}
+
+/* Style for the images within the leadership section */
+.timeline-item img {
+    width: 100%;  /* Ensures the image fills the container */
+    height: auto;  /* Maintain aspect ratio */
+    max-width: 250px;  /* Restrict the image size */
+    border-radius: 50%;  /* Make the image round */
+    object-fit: cover;  /* Ensure image covers the area without stretching */
+}
+
+
+
+</style>
+<!-- Header Start -->
+<!-- Header Start -->
+<div class="container-fluid page-header text-white" style="background-image: url('{% static 'img/1.jpeg' %}'); background-size: cover; background-position: center; position: relative; overflow: hidden;">
+    <!-- Dark Overlay -->
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5);"></div>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <!-- Improved H1 Visibility -->
+                <h1 class="display-3 text-white fw-bold animated fadeInDown">
+                    Executive Leaders
+                </h1>
+                <p class="lead text-white-50 animated fadeInUp" style="animation-delay: 0.3s;">
+                    Driving Excellence, Vision, and Innovation at Kingstone High School
+                </p>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center animated fadeInUp" style="animation-delay: 0.5s;">
+                        <li class="breadcrumb-item">
+                            <a class="text-white-50" href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a class="text-white-50" href="#">Pages</a>
+                        </li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">
+                            Executive Leaders
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Header End -->
+
+<!-- Header End -->
+
+<!-- Marquee Start -->
+<div class="container-fluid bg-light py-3 shadow">
+    <div class="marquee-container text-center">
+        <span class="text-success fw-bold fs-5 marquee-text">
+            🌟 Celebrating Visionary Leadership | Meet Our Executive Leaders! 🌟
+        </span>
+    </div>
+</div>
+<!-- Marquee End -->
+
+<!-- Executive Leaders Section Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h6 class="section-title text-success bg-light px-3 d-inline-block shadow-sm">Leadership</h6>
+            <h1 class="display-5">Meet the Pioneers of Excellence</h1>
+            <p class="text-muted">Our leaders inspire, guide, and set the vision for a brighter future.</p>
+        </div>
+
+        <!-- Leader Timeline -->
+        <div class="row g-5">
+            {% for leader in executive_leaders %}
+                <div class="col-md-6">
+                    <div class="timeline-item position-relative shadow-sm p-4 bg-white rounded wow fadeInLeft" data-wow-delay="0.1s">
+                        <div class="timeline-dot bg-success"></div>
+                        <h4 class="text-success">{{ leader.name }}</h4>
+                        <p class="text-muted">{{ leader.title }}</p>
+                        <img src="{{ leader.photo.url }}" alt="{{ leader.name }}" class="rounded img-fluid my-3">
+
+                        <p class="mb-0">{{ leader.quote }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+</div>
+<!-- Executive Leaders Section End -->
+
+<!-- Call to Action Start -->
+<div class="container-fluid bg-success py-5">
+    <div class="container text-center">
+        <h1 class="text-white">Join the Legacy!</h1>
+        <p class="text-white mb-4">Discover how our leaders are making a difference. Connect with us to learn more.</p>
+        <a href="/contact/" class="btn btn-light text-success py-2 px-4">Contact Us</a>
+    </div>
+</div>
+<!-- Call to Action End -->
+
+{% endblock %}

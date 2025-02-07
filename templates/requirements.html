@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Admission Requirements - Kingstone High School
+{% endblock %}
+
+{% block content %}
+<!-- Header Start -->
+<div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <h1 class="display-3 text-white animated slideInDown">Admission Requirements</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Admissions</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Requirements</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<!-- Requirements Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h6 class="section-title bg-white text-center text-primary px-3">Admissions</h6>
+            <h1 class="mb-4">Admission Requirements</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <h5 class="mb-3">General Requirements</h5>
+                <ul class="list-unstyled">
+                    <li><i class="fa fa-check text-primary me-2"></i>Completed application form</li>
+                    <li><i class="fa fa-check text-primary me-2"></i>Two recent passport-sized photographs</li>
+                    <li><i class="fa fa-check text-primary me-2"></i>Birth certificate (copy)</li>
+                    <li><i class="fa fa-check text-primary me-2"></i>Previous academic records and transcripts</li>
+                    <li><i class="fa fa-check text-primary me-2"></i>Recommendation letter from the previous school</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                <h5 class="mb-3">Additional Requirements</h5>
+                <ul class="list-unstyled">
+                    <li><i class="fa fa-check text-primary me-2"></i>Proof of residency or address</li>
+                    <li><i class="fa fa-check text-primary me-2"></i>Medical report or immunization records</li>
+                    <li><i class="fa fa-check text-primary me-2"></i>Interview with the admissions panel</li>
+                    <li><i class="fa fa-check text-primary me-2"></i>Entrance examination (where applicable)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a href="{% url 'apply_now' %}" class="btn btn-primary py-3 px-5">Apply Now</a>
+        </div>
+    </div>
+</div>
+<!-- Requirements End -->
+
+{% endblock %}

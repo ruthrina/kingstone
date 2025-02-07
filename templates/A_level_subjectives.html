@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}A-Level Subjects - Kingstone High School{% endblock %}
+
+{% block content %}
+<style>
+    .hero-alevel {
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                    url('{% static "img/alevel-bg.jpg" %}') no-repeat center center;
+        background-size: cover;
+        text-align: center;
+    }
+    .subject-card {
+        transition: transform 0.3s, box-shadow 0.3s;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        padding: 20px;
+    }
+    .subject-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .subject-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+    .subject-card i {
+        font-size: 40px;
+        color: #00044d;
+        margin-bottom: 10px;
+    }
+    .bg-success {
+        background-color: #004d40 !important;
+    }
+    .text-success {
+        color: #004d40 !important;
+    }
+    .hero-alevel {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(79, 79, 79, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('{% static "img/library.jpeg" %}') no-repeat center center;
+    background-size: cover;
+    text-align: center;
+}
+.hero-alevel h1 {
+    color: #0dbf00; /* Change this to your preferred color */
+}
+
+
+</style>
+
+<!-- Hero Section -->
+<section class="hero-alevel text-white">
+    <div class="container">
+        <h1 class="display-4 fw-bold">A-Level Subjects</h1>
+        <p>Choose from a diverse array of subjects to shape your future.</p>
+    </div>
+</section>
+
+<!-- Subjects List -->
+<section class="subjects-section py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="text-success fw-bold">Subjects Offered</h2>
+            <p class="text-muted">Unlock your potential with our carefully crafted A-Level curriculum.</p>
+        </div>
+        <div class="row g-4">
+            {% for subject in subjects %}
+            <div class="col-lg-4 col-md-6">
+                <div class="subject-card shadow-sm text-center">
+                    
+                    <i class="{{ subject.icon }}"></i>
+                    <h4 class="fw-bold text-success">{{ subject.code }} - {{ subject.name }}</h4>
+                    <p class="text-muted">{{ subject.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Highlights -->
+<section class="bg-success text-white py-5">
+    <div class="container text-center">
+        <h2>Why Study at Kingstone High School?</h2>
+        <p class="lead">With a focus on academic excellence, our A-Level program is designed to help you excel and achieve your goals.</p>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<div class="container-fluid py-5 text-center text-white">
+    <h2>Take the First Step Towards Your Dreams</h2>
+    <p>Contact us today to learn more about enrolling in our A-Level program.</p>
+    <a href="/contact/" class="btn btn-warning btn-lg text-dark">Contact Us</a>
+</div>
+
+{% endblock %}

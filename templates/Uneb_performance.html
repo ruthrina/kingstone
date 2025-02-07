@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+UNEB Performance - Kingstone High School
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center text-primary mb-4 wow fadeInUp">UNEB Performance</h1>
+    
+    {% for record in performances %}
+    <div class="card mb-4 shadow-sm p-4 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+        <h4 class="text-success">Year: {{ record.year }}</h4>
+        
+        <!-- UCE Results -->
+        <h5 class="text-primary">UCE Results</h5>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>First Grade</th>
+                        <th>Second Grade</th>
+                        <th>Third Grade</th>
+                        <th>Fourth Grade</th>
+                        <th>Failures</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in record.uce_performance.all %}
+                        <tr>
+                            <td>{{ result.subject }}</td>
+                            <td>{{ result.first_grade }}</td>
+                            <td>{{ result.second_grade }}</td>
+                            <td>{{ result.third_grade }}</td>
+                            <td>{{ result.fourth_grade }}</td>
+                            <td>{{ result.failures }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- UACE Results -->
+        <h5 class="text-primary">UACE Results</h5>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>One Principal</th>
+                        <th>Two Principals</th>
+                        <th>Three Principals</th>
+                        <th>Subsidiaries</th>
+                        <th>Failures</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in record.uace_performance.all %}
+                        <tr>
+                            <td>{{ result.one_principal }}</td>
+                            <td>{{ result.two_principals }}</td>
+                            <td>{{ result.three_principals }}</td>
+                            <td>{{ result.subsidiaries }}</td>
+                            <td>{{ result.failures }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endfor %}
+
+</div>
+{% endblock %}

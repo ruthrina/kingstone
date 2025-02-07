@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+O-Level Subjects - Kingstone High School
+{% endblock %}
+
+{% block content %}
+<style>
+    /* General Styling */
+    
+
+    /* Hero Section */
+    .hero-olevel {
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+        url('{% static "img/computer lab.jpeg" %}') no-repeat center center;
+        background-size: cover;
+        text-align: center;
+        color: white;
+        padding: 50px 0;
+    }
+
+    /* Section Headers */
+    .section-heading {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #004080;
+        margin-bottom: 10px;
+    }
+
+    .section-subheading {
+        font-size: 1.1rem;
+        color: #555;
+        max-width: 600px;
+        margin: 0 auto 40px auto;
+    }
+
+    /* Subject Cards */
+    .subject-card {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+        text-align: center;
+        transition: 0.3s;
+        border: 1px solid #ddd;
+        position: relative;
+    }
+
+    .subject-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .subject-icon {
+        font-size: 45px;
+        color: #004080;
+        margin-bottom: 15px;
+    }
+
+    .subject-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #004080;
+    }
+
+    .subject-description {
+        font-size: 1rem;
+        color: #666;
+    }
+
+    /* Call to Action */
+    .cta-section {
+        background: #004080;
+        color: white;
+        padding: 50px 0;
+        text-align: center;
+        border-radius: 0px 0px 50px 50px;
+    }
+
+    .cta-section h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .cta-btn {
+        background-color: #ffcc00;
+        border: none;
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 12px 25px;
+        color: #004080;
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
+    .cta-btn:hover {
+        background-color: #ffdb4d;
+        transform: scale(1.05);
+    }
+</style>
+
+<!-- Hero Section -->
+<section class="hero-olevel text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-white">O-Level Subjects</h1>
+        <p class="lead text-light">Explore a diverse range of subjects that shape minds and open opportunities.</p>
+    </div>
+</section>
+
+
+<!-- Subjects List Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading">Subjects We Offer</h2>
+            <p class="section-subheading">
+                Discover a comprehensive curriculum tailored for holistic education.
+            </p>
+        </div>
+        <div class="row g-4">
+            {% for subject in subjects %}
+            <div class="col-md-4">
+                <div class="subject-card">
+                    <i class="{{ subject.icon }} subject-icon"></i>
+                    <h4 class="subject-title">{{ subject.name }}</h4>
+                    <p class="subject-description">{{ subject.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<div class="cta-section">
+    <div class="container">
+        <h2>Ready to Learn?</h2>
+        <p>Enroll now and unlock your full potential with our diverse curriculum!</p>
+        <a href="/contact/" class="cta-btn">Contact Us</a>
+    </div>
+</div>
+
+{% endblock %}
