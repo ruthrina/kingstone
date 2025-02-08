@@ -19,7 +19,7 @@ colorama==0.4.6
 confection==0.1.4
 contourpy==1.2.0
 crashtest==0.4.1
-crispy-bootstrap4 @ git+https://github.com/django-crispy-forms/crispy-bootstrap4.git@be1cb8a79ecdefb612d5444a0ad70a25e26cde4d
+
 cycler==0.12.1
 cymem==2.0.8
 decorator==4.4.2
@@ -110,8 +110,8 @@ python-decouple==3.8
 python-dotenv==1.0.0
 python-slugify==8.0.4
 pytz==2024.1
-pywin32==306
-pywin32-ctypes==0.2.3
+pywin32
+pywin32-ctypes
 PyYAML==6.0.1
 qrcode==7.4.2
 rapidfuzz==3.9.7
